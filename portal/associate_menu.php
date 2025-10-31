@@ -10,6 +10,15 @@
 
 <!doctype html>
 <html lang="en">
+<?php
+/*
+* Reference for tables: https://getbootstrap.com/docs/4.5/content/tables/
+*/
+
+session_start();
+require_once('../config.php');
+require_once('../validate_session.php');
+?>
 
 <head>
     <meta charset="utf-8">
@@ -93,9 +102,12 @@
                 <!-- Content will be displayed here -->
                 <h3>Welcome to your Associate Dashboard</h3>
                 <p class="text-muted">This area will contain your quotes and other content.</p>
+        <a href="view_quote.php">Create, View, Modify, and Delete Quotes</a><br>
             </div>
         </div>
     </main>
+	
+	
 
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
