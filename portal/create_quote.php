@@ -27,15 +27,15 @@ require_once('../validate_session.php');
 <body>
 	<?php
     if (isset($_POST['submitButton'])) {
-        $customer = $_POST['myDropdown'];
-
+		$_SESSION['customer_var'] = $_POST['myDropdown'];
         // Further processing with $selectedValue can be done here
-        // e.g., database operations, conditional logic, etc.
-
-    }
+        // e.g., database operations, conditional logic, etc.	
+	}
+	$customer = $_SESSION['customer_var'];
 	$sql = "SELECT city, street, contact FROM customers WHERE name='" .$customer . "';";
 	
 	$result = $conn2->query($sql);
+	
 	
 	while($row = mysqli_fetch_assoc($result)){
 		$city = $row['city'];
@@ -44,6 +44,7 @@ require_once('../validate_session.php');
 	}
 	
 	$address = $city . " " . $street . " " . $contact . " ";
+	$_POST['address'] = $address;
     ?>
 	
     <div style="margin-top: 20px" class="container">
@@ -98,7 +99,7 @@ require_once('../validate_session.php');
             /**
              * Grab information from the form submission and store values into variables.
              */
-            $customer = isset($_POST['customer']) ? $_POST['customer'] : " ";  
+            $customer = isset($_SESSION['customer_var']) ? $_SESSION['customer_var'] : " ";  
             $address = isset($_POST['address']) ? $_POST['address'] : " ";
             $email = isset($_POST['email']) ? $_POST['email'] : " ";
             $line_item = isset($_POST['line_item']) ? $_POST['line_item'] : " ";
